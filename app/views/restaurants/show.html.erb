@@ -1,2 +1,49 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class='container'>
+  <div class="row card-reviews">
+    <div class="text-center">
+      <h1><%= @restaurant.name %></h1>
+    </div>
+    <div class="col-xs-8 col-xs-offset-1 ">
+      <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+        <%= @restaurant.address %></p>
+    </div>
+    <div class="col-xs-8 col-xs-offset-1 ">
+      <p><i class="fa fa-phone" aria-hidden="true"></i>
+        <%= @restaurant.phone_number %></p>
+    </div>
+    <div class="col-xs-8 col-xs-offset-1 ">
+      <p><i class="fa fa-cutlery" aria-hidden="true"></i>
+        <%= @restaurant.category %></p>
+    </div>
+
+    <div class="col-xs-8">
+      <h3>Reviews of customers</h3>
+      <% @restaurant.reviews.each do |review| %>
+      <div class="col-xs-8">
+        <%= review.content %>
+        <%= review.rating %>
+      <% end %>
+      </div>
+
+
+    <div class="col-xs-3 col-xs-offset-3 ">
+      <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_restaurant_path(@restaurant) %>
+    </div>
+    <div class="col-xs-3">
+      <%= link_to '<i class="fa fa-trash"></i>'.html_safe, restaurant_path(@restaurant),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    </div>
+    <div class="col-xs-3">
+       <%= link_to '<i class="fa fa-comment"></i>'.html_safe, new_restaurant_review_path(@restaurant)  %>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+

@@ -1,2 +1,16 @@
-<h1>Restaurants#index</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<h1>Liste des restaurants dispo bro ! :</h1>
+<% @restaurants.each do |restaurant| %>
+  <h2><%= restaurant.name %></h2>
+  <p><%= restaurant.address %></p>
+  <p><%= restaurant.phone_number %></p>
+  <p><%= restaurant.category %></p>
+  <%= link_to '<i class="fa fa-eye"></i>'.html_safe, restaurant_path(restaurant) %>
+  <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_restaurant_path(restaurant) %>
+  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, restaurant_path(restaurant),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+<% end %>
+
+<h2> <%= link_to "add your restaurant !", new_restaurant_path  %> </h2>
+
+
